@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "846765514862",
+    "project_id": "mobilepam-a5cfa",
+    "storage_bucket": "mobilepam-a5cfa.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:846765514862:android:4df281735293cc5155467f",
+        "android_client_info": {
+          "package_name": "com.example.mobilefirebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4vyHBsn-Z4PKIh3sV-Uc6XzIDFveUHy8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
