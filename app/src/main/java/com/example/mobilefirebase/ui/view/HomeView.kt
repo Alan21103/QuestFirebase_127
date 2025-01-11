@@ -43,9 +43,12 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.mobilefirebase.R
 import com.example.mobilefirebase.model.Mahasiswa
+import com.example.mobilefirebase.navigation.DestinasiHome
+import com.example.mobilefirebase.ui.customwidget.CostumeTopAppBar
 import com.example.mobilefirebase.ui.viewmodel.HomeUiState
 import com.example.mobilefirebase.ui.viewmodel.HomeViewModel
 import com.example.mobilefirebase.ui.viewmodel.PenyediaViewModel
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -60,8 +63,11 @@ fun HomeScreen(
     Scaffold(
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
-            TopAppBar(
-                title = { Text("Tambah Mahasiswa") },
+            CostumeTopAppBar(
+                title = DestinasiHome.titleRes,
+                canNavigateBack = false,
+                scrollBehavior = scrollBehavior,
+                onRefresh = { viewModel.getMhs() }
             )
         },
         floatingActionButton = {
