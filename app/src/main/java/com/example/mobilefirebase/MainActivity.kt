@@ -11,8 +11,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.mobilefirebase.navigation.PengelolaHalaman
 import com.example.mobilefirebase.ui.theme.MobileFirebaseTheme
-import com.example.mobilefirebase.ui.view.HomeScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,8 +21,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             MobileFirebaseTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    HomeScreen(
-                        navigateToItemEntry = {},
+                    PengelolaHalaman(
                         modifier = Modifier.padding(innerPadding))
                 }
             }
