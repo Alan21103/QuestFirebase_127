@@ -20,6 +20,7 @@ import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
@@ -27,9 +28,13 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.mobilefirebase.navigation.DestinasiHome
+import com.example.mobilefirebase.navigation.DestinasiInsert
+import com.example.mobilefirebase.ui.customwidget.CostumeTopAppBar
 import com.example.mobilefirebase.ui.viewmodel.FormErrorState
 import com.example.mobilefirebase.ui.viewmodel.FormState
 import com.example.mobilefirebase.ui.viewmodel.InsertUiState
@@ -42,7 +47,7 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun InsertMhsView(
-    onBack: () -> Unit,
+    navigateBack: () -> Unit,
     onNavigate: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: InsertViewModel = viewModel(factory = PenyediaViewModel.Factory)
@@ -51,6 +56,7 @@ fun InsertMhsView(
     val uiEvent = viewModel.uiEvent
     val snackbarHostState = remember { SnackbarHostState() }
     val coroutineScope = rememberCoroutineScope()
+    val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
 
 // Observe changes in state for snackbar and navigation
     LaunchedEffect(uiState) {
@@ -74,16 +80,16 @@ fun InsertMhsView(
     }
 
     Scaffold(
-        modifier = modifier,
+        modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
         topBar = {
-            TopAppBar(
-                title = { Text("Tambah Mahasiswa") },
-                navigationIcon = {
-                    Button(onClick = onBack) { Text("Back") } // Back button
-                }
+            CostumeTopAppBar(
+                title = DestinasiInsert.titleRes,
+                canNavigateBack = true,
+                scrollBehavior = scrollBehavior,
+                navigateUp = navigateBack
             )
-        }
+        },
     ) { padding ->
         Column(
             modifier = Modifier
