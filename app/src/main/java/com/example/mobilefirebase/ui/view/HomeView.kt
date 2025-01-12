@@ -28,7 +28,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
-import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -109,25 +108,14 @@ fun HomeStatus(
             OnLoading(modifier = modifier.fillMaxSize())
         }
         is HomeUiState.Success -> {
-
                 MhsLayout(
                     mahasiswa = homeUiState.data,
                     modifier = modifier.fillMaxWidth(),
                     onDetailClick = { onDetailClick(it.nim) },
-                    onDeleteClick = { onDeleteClick(it) }
+                    onDeleteClick = { mahasiswa ->
+                        deleteConfirm = mahasiswa // Set mahasiswa yang akan dihapus
+                    }
                 )
-
-            deleteConfirm?.let { data ->
-                DeleteConfirmationDialog(
-                    onDeleteConfirm = {
-                        onDeleteClick(data)
-                        deleteConfirm = null
-                    },
-                    onDeleteCancel = {
-                        deleteConfirm = null
-                    })
-            }
-
         }
         is HomeUiState.Error -> {
             OnError(
@@ -135,6 +123,17 @@ fun HomeStatus(
                 retryAction, modifier = Modifier.fillMaxWidth(),
             )
         }
+    }
+
+    deleteConfirm?.let { data ->
+        DeleteConfirmationDialog(
+            onDeleteConfirm = {
+                onDeleteClick(data)
+                deleteConfirm = null
+            },
+            onDeleteCancel = {
+                deleteConfirm = null
+            })
     }
 }
 
@@ -235,7 +234,7 @@ fun MhsCard(
                 )
             }
             Text(
-                text = mahasiswa.kelas,
+                text = mahasiswa.Kelas,
                 style = MaterialTheme.typography.titleMedium
             )
             Text(
