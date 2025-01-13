@@ -95,7 +95,7 @@ fun InsertMhsView(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(padding)
-                .padding(16.dp)
+                .padding(10.dp)
         ) {
             InsertBodyMhs(
                 uiState = uiEvent,
@@ -122,7 +122,8 @@ fun InsertBodyMhs(
     homeUiState: FormState
 ) {
     Column(
-        modifier = modifier.fillMaxWidth(),
+        modifier = modifier
+            .fillMaxWidth(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -149,7 +150,7 @@ fun InsertBodyMhs(
                         color = Color.White,
                         modifier = Modifier
                             .size(20.dp)
-                            .padding(end = 8.dp)
+                            .padding(end = 2.dp)
                     )
                     Text("Loading...")
                 }
@@ -171,7 +172,8 @@ fun FormMahasiswa(
     val kelas = listOf("A", "B", "C", "D", "E")
 
     Column(
-        modifier = modifier.fillMaxWidth()
+        modifier = modifier
+            .fillMaxWidth(),
     ) {
         OutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
@@ -195,8 +197,6 @@ fun FormMahasiswa(
         )
         Text(text = errorState.nim ?: "", color = Color.Red)
 
-        Spacer(modifier = Modifier.height(16.dp))
-
         // Jenis Kelamin
         Text(text = "Jenis Kelamin")
         Row(modifier = Modifier.fillMaxWidth()) {
@@ -211,7 +211,6 @@ fun FormMahasiswa(
             }
         }
         Text(text = errorState.gender ?: "", color = Color.Red)
-
         // Alamat Field
         OutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
@@ -222,8 +221,6 @@ fun FormMahasiswa(
             placeholder = { Text("Masukkan alamat") }
         )
         Text(text = errorState.alamat ?: "", color = Color.Red)
-
-        Spacer(modifier = Modifier.height(16.dp))
 
         // Kelas
         Text(text = "Kelas")
@@ -251,6 +248,37 @@ fun FormMahasiswa(
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
         Text(text = errorState.angkatan ?: "", color = Color.Red)
+
+        OutlinedTextField(
+            modifier = Modifier.fillMaxWidth(),
+            value = mahasiswaEvent.judulSkripsi,
+            onValueChange = { onValueChange(mahasiswaEvent.copy(judulSkripsi = it)) },
+            label = { Text("Judul Skripsi") },
+            isError = errorState.judulSkripsi != null,
+            placeholder = { Text("Masukkan Judul Skripsi") }
+        )
+        Text(text = errorState.judulSkripsi ?: "", color = Color.Red)
+
+        OutlinedTextField(
+            modifier = Modifier.fillMaxWidth(),
+            value = mahasiswaEvent.dosBim1,
+            onValueChange = { onValueChange(mahasiswaEvent.copy(dosBim1 = it)) },
+            label = { Text("Dosen Pembimbing 1") },
+            isError = errorState.dosBim1 != null,
+            placeholder = { Text("Masukkan Dosen Pembimbing 1") }
+        )
+        Text(text = errorState.dosBim1 ?: "", color = Color.Red)
+
+        OutlinedTextField(
+            modifier = Modifier.fillMaxWidth(),
+            value = mahasiswaEvent.dosBim2,
+            onValueChange = { onValueChange(mahasiswaEvent.copy(dosBim2 = it)) },
+            label = { Text("Dosen Pembimbing 2") },
+            isError = errorState.dosBim2 != null,
+            placeholder = { Text("Masukkan Dosen Pembimbing 2") }
+        )
+        Text(text = errorState.dosBim2 ?: "", color = Color.Red)
+
     }
 }
 

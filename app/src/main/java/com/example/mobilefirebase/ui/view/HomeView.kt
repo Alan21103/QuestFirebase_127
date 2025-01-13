@@ -156,7 +156,7 @@ fun OnError(
     modifier: Modifier = Modifier
 ) {
     Column(
-        modifier = modifier,
+        modifier = modifier.padding(top = 300.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -234,11 +234,11 @@ fun MhsCard(
                 )
             }
             Text(
-                text = mahasiswa.Kelas,
+                text = mahasiswa.kelas,
                 style = MaterialTheme.typography.titleMedium
             )
             Text(
-                text = mahasiswa.alamat,
+                text = mahasiswa.judulSkripsi,
                 style = MaterialTheme.typography.titleMedium
             )
         }
