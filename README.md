@@ -12,3 +12,11 @@ Home Setelah data di insert
 
 Halaman delete
 ![delete](https://github.com/user-attachments/assets/2c827aeb-1afb-4266-a194-fbbd8c88de98)
+
+HOME UCP
+![Screenshot_20250113_170459](https://github.com/user-attachments/assets/d0145c60-2cb3-4935-ae23-206c3f61efa6)
+
+Insert UCP
+![Screenshot_20250113_170424](https://github.com/user-attachments/assets/93d1c446-af9e-456a-aac9-94a957ff7ed5)
+
+
